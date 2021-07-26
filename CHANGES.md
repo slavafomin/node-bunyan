@@ -13,6 +13,10 @@ Known issues:
 
 (nothing yet)
 
+## 2.1.0 (beta)
+
+- Added support for Request ID generators
+
 ## 2.0.5 (beta)
 
 - [pull #575, #278] Change the default "req" serializer to accept expressjs's
