@@ -743,7 +743,7 @@ Please upgrade to bunyan 0.20.0.
 
 - [issue #33] Log rotation support:
 
-        var bunyan = require('bunyan');
+        var bunyan = require('@moebius/bunyan');
         var log = bunyan.createLogger({
             name: 'myapp',
             streams: [{

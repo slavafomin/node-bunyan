@@ -1,10 +1,25 @@
 [![npm version](https://img.shields.io/npm/v/bunyan.svg?style=flat)](https://www.npmjs.com/package/bunyan)
 [![Build Status](https://travis-ci.org/trentm/node-bunyan.svg?branch=master)](https://travis-ci.org/trentm/node-bunyan)
 
+---
+
+# @moebius/bunyan
+
+This is a fork of the Bunyan logging library created by me to add some
+features useful in my projects. Feel free to use it as well if you find it
+helpful. All the changes a properly documented in this README file and
+covered by tests.
+
+## Differences:
+
+- Added support for Request ID generators
+
+---
+
 Bunyan is **a simple and fast JSON logging library** for node.js services:
 
 ```js
-var bunyan = require('bunyan');
+var bunyan = require('@moebius/bunyan');
 var log = bunyan.createLogger({name: "myapp"});
 log.info("hi");
 ```
@@ -78,15 +93,15 @@ Active branches:
 - "1.x" is for 1.x maintenance work, if any. 1.x releases are still "latest" in
   npm.
 - "master" is currently for coming Bunyan 2.x work. For now, 2.x releases are
-  published to npm with the "beta" tag, meaning that `npm install bunyan` is
-  still 1.x for now. To install 2.x use `npm install bunyan@2` or
-  `npm install bunyan@beta`.
+  published to npm with the "beta" tag, meaning that `npm install @moebius/bunyan` is
+  still 1.x for now. To install 2.x use `npm install @moebius/bunyan@2` or
+  `npm install @moebius/bunyan@beta`.
 
 
 # Installation
 
 ```sh
-npm install bunyan
+npm install @moebius/bunyan
 ```
 
 **Tip**: The `bunyan` CLI tool is written to be compatible (within reason) with
@@ -124,7 +139,7 @@ named after the logging levels:
 
 ```js
 // hi.js
-var bunyan = require('bunyan');
+var bunyan = require('@moebius/bunyan');
 var log = bunyan.createLogger({name: 'myapp'});
 log.info('hi');
 log.warn({lang: 'fr'}, 'au revoir');
@@ -146,7 +161,7 @@ $ node hi.js
 ## Constructor API
 
 ```js
-var bunyan = require('bunyan');
+var bunyan = require('@moebius/bunyan');
 var log = bunyan.createLogger({
     name: <string>,                     // Required
     level: <level name or number>,      // Optional, see "Levels" section
@@ -302,7 +317,7 @@ be exactly as on the parent logger with the addition of the `widget_type`
 field:
 
 ```js
-var bunyan = require('bunyan');
+var bunyan = require('@moebius/bunyan');
 var log = bunyan.createLogger({name: 'myapp'});
 
 function Wuzzle(options) {
@@ -644,7 +659,7 @@ Pretty-printed:
 ## Core fields
 
 - `v`: Required. Integer. Added by Bunyan. Cannot be overridden.
-  This is the Bunyan log format version (`require('bunyan').LOG_VERSION`).
+  This is the Bunyan log format version (`require('@moebius/bunyan').LOG_VERSION`).
   The log version is a single integer. `0` is until I release a version
   "1.0.0" of node-bunyan. Thereafter, starting with `1`, this will be
   incremented if there is any backward incompatible change to the log record
@@ -842,7 +857,7 @@ manage the stream. A Bunyan Logger instance has one or more streams.
 In general streams are specified with the "streams" option:
 
 ```js
-var bunyan = require('bunyan');
+var bunyan = require('@moebius/bunyan');
 var log = bunyan.createLogger({
     name: "foo",
     streams: [
@@ -879,7 +894,7 @@ After a bunyan instance has been initialized, you may add additional streams by
 calling the `addStream` function.
 
 ```js
-var bunyan = require('bunyan');
+var bunyan = require('@moebius/bunyan');
 var log = bunyan.createLogger('myLogger');
 log.addStream({
   name: "myNewStream",
@@ -1200,7 +1215,7 @@ To use a RingBuffer:
 
 ```js
 /* Create a ring buffer that stores the last 100 records. */
-var bunyan = require('bunyan');
+var bunyan = require('@moebius/bunyan');
 var ringbuffer = new bunyan.RingBuffer({ limit: 100 });
 var log = bunyan.createLogger({
     name: 'foo',
@@ -1408,7 +1423,7 @@ script.
 2. An example script using Bunyan, "play.js":
 
     ```js
-    var bunyan = require('bunyan');
+    var bunyan = require('@moebius/bunyan');
     var log = bunyan.createLogger({name: 'play', level: 'debug'});
     log.trace('this one does not emit');
     log.debug('hi on debug');   // console.log
